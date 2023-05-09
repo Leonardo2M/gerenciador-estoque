@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Produto {
+public class ProdutoEstoque {
 
-    private String nome;
-    private BigDecimal preco;
+    private Produto produto;
+    private Integer quantidadeCheio;
+    private Integer quantidadeVazio;
+
 
 }
