@@ -1,4 +1,4 @@
-package br.com.gugas.gerenciador.domain.model;
+package br.com.gugas.gerenciador.domain.model.produto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
