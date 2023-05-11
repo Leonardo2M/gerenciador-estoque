@@ -19,7 +19,7 @@ public class Cliente {
     private String nome;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "numeros", column = @Column(name = "CPF"))
+            @AttributeOverride(name = "numero", column = @Column(name = "CPF"))
     })
     private CPF cpf;
     @Embedded
