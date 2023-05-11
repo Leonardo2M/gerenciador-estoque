@@ -19,13 +19,19 @@ import java.util.Set;
 @Table(name = "produtos")
 public class Produto {
 
+    public Produto(String nome, BigDecimal preco) {
+        this.nome = nome;
+        this.preco = preco;
+        this.estoque = new Estoque(null, this, 0, 0);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private BigDecimal preco;
-    @OneToMany(mappedBy = "produto")
-    private List<Estoque> estoques = new ArrayList<>();
+    @OneToOne
+    private Estoque estoque;
     @ManyToMany(mappedBy = "produtos")
     private Set<Venda> vendas = new HashSet<>();
 
