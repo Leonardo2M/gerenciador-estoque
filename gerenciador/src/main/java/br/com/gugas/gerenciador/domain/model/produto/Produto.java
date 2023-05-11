@@ -22,7 +22,7 @@ public class Produto {
     public Produto(String nome, BigDecimal preco) {
         this.nome = nome;
         this.preco = preco;
-        this.estoque = new Estoque(null, this, 0, 0);
+        this.estoque = new Estoque(0, 0);
     }
 
     @Id
@@ -30,7 +30,7 @@ public class Produto {
     private Long id;
     private String nome;
     private BigDecimal preco;
-    @OneToOne
+    @Embedded
     private Estoque estoque;
     @ManyToMany(mappedBy = "produtos")
     private Set<Venda> vendas = new HashSet<>();
