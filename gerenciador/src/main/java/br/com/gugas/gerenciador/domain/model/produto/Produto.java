@@ -37,7 +37,7 @@ public class Produto {
     private Set<Venda> vendas = new HashSet<>();
 
     public void atualizarDados(AtualizarProduto dados) {
-        if(dados.getNome() != null) {
+        if(dados.getNome() != null && !dados.getNome().equals("")) {
             this.nome = dados.getNome();
         }
         if(dados.getPreco() != null) {
