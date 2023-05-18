@@ -32,13 +32,13 @@ public class ProdutoService {
 
     public void addProduto(Long id, int quantidade) {
         Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
-        produto.adicionarProduto(quantidade);
+        produto.getEstoque().adicionarProduto(quantidade);
         produtoRepository.save(produto);
     }
 
     public void addCompra(Long id, int quantidade) {
         Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
-        produto.adicionarCompra(quantidade);
+        produto.getEstoque().adicionarCompra(quantidade);
         produtoRepository.save(produto);
     }
 }
