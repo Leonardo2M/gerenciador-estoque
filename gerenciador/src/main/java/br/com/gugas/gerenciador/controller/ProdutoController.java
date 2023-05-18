@@ -2,6 +2,7 @@ package br.com.gugas.gerenciador.controller;
 
 import br.com.gugas.gerenciador.domain.model.produto.Produto;
 import br.com.gugas.gerenciador.domain.service.ProdutoService;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,24 @@ public class ProdutoController {
     @PostMapping("/adicionarProduto/{id}")
     public String addProduto(@PathVariable Long id, @RequestParam("quantidade") String quantidade) {
         service.addProduto(id, Integer.parseInt(quantidade));
+        return "redirect:/produto/listar";
+    }
+
+    @GetMapping("/atualizar/{id}")
+    public String atualizar() {
+        return "produtos/atualizarForm";
+    }
+
+    @PostMapping("/atualizar/{id}")
+    public String atualizar(@PathVariable Long id, AtualizarProduto dados) {
+        service.atualizar(id, dados);
+
+        return "redirect:/produto/listar";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String deletar(@PathVariable Long id) {
+        service.deletar(id);
         return "redirect:/produto/listar";
     }
 

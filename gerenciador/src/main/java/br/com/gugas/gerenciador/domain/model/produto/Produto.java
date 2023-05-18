@@ -1,6 +1,7 @@
 package br.com.gugas.gerenciador.domain.model.produto;
 
 import br.com.gugas.gerenciador.domain.model.venda.Venda;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,5 +36,12 @@ public class Produto {
     @ManyToMany(mappedBy = "produtos")
     private Set<Venda> vendas = new HashSet<>();
 
-
+    public void atualizarDados(AtualizarProduto dados) {
+        if(dados.getNome() != null) {
+            this.nome = dados.getNome();
+        }
+        if(dados.getPreco() != null) {
+            this.preco = dados.getPreco();
+        }
+    }
 }

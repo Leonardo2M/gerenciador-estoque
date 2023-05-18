@@ -55,10 +55,10 @@
                         </div>
                     </td>
                     <td>
-                        <button type="submit" th:href="@{/produto/atualizar/${produto.id}}" class="btn btn-warning">ATUALIZAR</button>
+                        <a th:href="@{'/produto/atualizar/' + ${produto.id}}" ><button type="submit" class="btn btn-warning">ATUALIZAR</button></a>
                     </td>
                     <td>
-                        <button type="submit" th:href="@{/produto/atualizar/${produto.id}}" class="btn btn-danger">EXCLUIR</button>
+                        <a th:href="@{'/produto/excluir/' + ${produto.id}}"><button type="submit" class="btn btn-danger">EXCLUIR</button></a>
                     </td>
                 </tr>
                 </tbody>

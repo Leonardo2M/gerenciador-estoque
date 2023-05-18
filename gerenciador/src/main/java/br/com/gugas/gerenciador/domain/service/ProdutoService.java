@@ -3,10 +3,12 @@ package br.com.gugas.gerenciador.domain.service;
 import br.com.gugas.gerenciador.domain.exception.ProdutoException;
 import br.com.gugas.gerenciador.domain.model.produto.Produto;
 import br.com.gugas.gerenciador.domain.repository.ProdutoRepository;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
 import br.com.gugas.gerenciador.dto.produto.ListarProduto;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -29,6 +31,13 @@ public class ProdutoService {
 
     public Produto buscarPorId(Long id) {
         return produtoRepository.findById(id).orElseThrow(() -> new ProdutoException("Id não encontrado."));
+    }
+
+    public void atualizar(Long id, AtualizarProduto dados) {
+        Produto produto = buscarPorId(id);
+        produto.atualizarDados(dados);
+
+        produtoRepository.save(produto);
     }
 
     public void deletar(Long id) {
