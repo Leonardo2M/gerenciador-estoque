@@ -35,4 +35,11 @@ public class Produto {
     @ManyToMany(mappedBy = "produtos")
     private Set<Venda> vendas = new HashSet<>();
 
+    public void adicionarCompra(int quantidade) {
+        this.estoque.adicionarCompra(quantidade);
+    }
+
+    public void adicionarProduto(int quantidade) {
+        this.estoque.adicionarProduto(quantidade);
+    }
 }

@@ -25,4 +25,20 @@ public class ProdutoService {
     public List<ListarProduto> listar() {
         return produtoRepository.findAll().stream().map(ListarProduto::new).toList();
     }
+
+    public Produto buscarPorId(Long id) {
+        return produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado."));
+    }
+
+    public void addProduto(Long id, int quantidade) {
+        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
+        produto.adicionarProduto(quantidade);
+        produtoRepository.save(produto);
+    }
+
+    public void addCompra(Long id, int quantidade) {
+        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
+        produto.adicionarCompra(quantidade);
+        produtoRepository.save(produto);
+    }
 }

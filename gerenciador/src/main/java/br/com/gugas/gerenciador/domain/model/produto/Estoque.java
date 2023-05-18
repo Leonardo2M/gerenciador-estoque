@@ -15,4 +15,12 @@ public class Estoque {
     private Integer quantidadeCheio;
     private Integer quantidadeVazio;
 
+    public void adicionarCompra(int quantidade) {
+        this.quantidadeVazio += quantidade;
+    }
+
+    public void adicionarProduto(int quantidade) {
+        this.quantidadeCheio += quantidade;
+        this.quantidadeVazio -= quantidade;
+    }
 }

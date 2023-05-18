@@ -1,11 +1,10 @@
 package br.com.gugas.gerenciador.controller;
 
+import br.com.gugas.gerenciador.domain.model.produto.Produto;
 import br.com.gugas.gerenciador.domain.service.ProdutoService;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -27,15 +26,27 @@ public class ProdutoController {
     public String salvar(CadastroProduto dados) {
         service.salvar(dados);
 
-        return "produtos/produtoForm";
+        return "redirect:/produto/listar";
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ModelAndView listarProdutos() {
         ModelAndView mv = new ModelAndView("produtos/produtosCadastrados");
         mv.addObject("produtos", service.listar());
 
         return mv;
+    }
+
+    @PostMapping("/adicionarCompra/{id}")
+    public String addEstoque(@PathVariable Long id, @RequestParam("quantidade") String quantidade) {
+        service.addCompra(id, Integer.parseInt(quantidade));
+        return "redirect:/produto/listar";
+    }
+
+    @PostMapping("/adicionarProduto/{id}")
+    public String addProduto(@PathVariable Long id, @RequestParam("quantidade") String quantidade) {
+        service.addProduto(id, Integer.parseInt(quantidade));
+        return "redirect:/produto/listar";
     }
 
 }
