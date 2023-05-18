@@ -31,6 +31,11 @@ public class ProdutoService {
         return produtoRepository.findById(id).orElseThrow(() -> new ProdutoException("Id não encontrado."));
     }
 
+    public void deletar(Long id) {
+        produtoRepository.deleteById(id);
+        System.out.println("Produto de id = " + id + " deletado com sucesso!K" );
+    }
+
     public void addProduto(Long id, int quantidade) {
         Produto produto = buscarPorId(id);
         produto.getEstoque().adicionarProduto(quantidade);
