@@ -8,7 +8,6 @@ import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
 import br.com.gugas.gerenciador.dto.produto.ListarProduto;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
