@@ -1,5 +1,6 @@
 package br.com.gugas.gerenciador.domain.service;
 
+import br.com.gugas.gerenciador.domain.exception.ProdutoException;
 import br.com.gugas.gerenciador.domain.model.produto.Produto;
 import br.com.gugas.gerenciador.domain.repository.ProdutoRepository;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
@@ -27,17 +28,17 @@ public class ProdutoService {
     }
 
     public Produto buscarPorId(Long id) {
-        return produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado."));
+        return produtoRepository.findById(id).orElseThrow(() -> new ProdutoException("Id não encontrado."));
     }
 
     public void addProduto(Long id, int quantidade) {
-        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
+        Produto produto = buscarPorId(id);
         produto.getEstoque().adicionarProduto(quantidade);
         produtoRepository.save(produto);
     }
 
     public void addCompra(Long id, int quantidade) {
-        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Id não encontrado"));
+        Produto produto = buscarPorId(id);
         produto.getEstoque().adicionarCompra(quantidade);
         produtoRepository.save(produto);
     }
