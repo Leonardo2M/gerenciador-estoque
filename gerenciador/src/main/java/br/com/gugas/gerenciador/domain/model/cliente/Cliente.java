@@ -39,7 +39,9 @@ public class Cliente {
         this.ativo = true;
     }
 
-    public void desativar() {
-        this.ativo = false;
+    public void mudarEstadoAtivo() {
+        this.ativo = !this.ativo;
     }
+
+
 }
