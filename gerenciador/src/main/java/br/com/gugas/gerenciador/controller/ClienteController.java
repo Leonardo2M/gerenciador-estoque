@@ -49,4 +49,10 @@ public class ClienteController {
         service.deletar(id);
         return "redirect:/cliente/listar";
     }
+
+    @GetMapping("/inativos/reativar/{id}")
+    public String reativar(@PathVariable Long id) {
+        service.reativar(id);
+        return "redirect:/cliente/listar";
+    }
 }

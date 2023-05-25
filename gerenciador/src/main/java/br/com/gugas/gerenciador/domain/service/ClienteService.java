@@ -37,7 +37,13 @@ public class ClienteService {
 
     public void deletar(Long id) {
         Cliente cliente = buscarPorId(id);
-        cliente.desativar();
+        cliente.mudarEstadoAtivo();
+        clienteRepository.save(cliente);
+    }
+
+    public void reativar(Long id) {
+        Cliente cliente = buscarPorId(id);
+        cliente.mudarEstadoAtivo();
         clienteRepository.save(cliente);
     }
 
