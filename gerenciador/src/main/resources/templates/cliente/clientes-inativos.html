@@ -20,10 +20,6 @@
                 <tr>
                     <th>Nome</th>
                     <th>CPF</th>
-                    <th>Logradouro</th>
-                    <th>Bairro</th>
-                    <th>Cidade</th>
-                    <th>Telefone</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -32,10 +28,6 @@
                 <tr th:each="cliente : ${clientes}">
                     <td><span th:text="${cliente.nome}"></span></td>
                     <td><span th:text="${cliente.cpf.numero}"></span></td>
-                    <td><span th:text="${cliente.endereco.logradouro + ' ' + cliente.endereco.numero}"></span></td>
-                    <td><span th:text="${cliente.endereco.bairro}"></span></td>
-                    <td><span th:text="${cliente.endereco.cidade}"></span></td>
-                    <td><span th:text="${cliente.telefone.ddd + ' ' + cliente.telefone.numero}"></span></td>
                     <td>
                         <a th:href="@{'/cliente/inativos/reativar/' + ${cliente.id}}" ><button type="submit" class="btn btn-info">REATIVAR CONTA</button></a>
                     </td>

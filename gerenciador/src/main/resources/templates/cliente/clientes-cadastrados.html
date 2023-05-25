@@ -37,10 +37,10 @@
                     <td><span th:text="${cliente.endereco.cidade}"></span></td>
                     <td><span th:text="${cliente.telefone.ddd + ' ' + cliente.telefone.numero}"></span></td>
                     <td>
-                        <a href="#" ><button type="submit" class="btn btn-warning">ATUALIZAR</button></a>
+                        <a href="#" ><button type="submit" class="btn btn-warning">EDITAR</button></a>
                     </td>
                     <td>
-                        <a th:href="@{'/cliente/excluir/' + ${cliente.id}}"><button type="submit" class="btn btn-danger">EXCLUIR</button></a>
+                        <a th:href="@{'/cliente/excluir/' + ${cliente.id}}"><button type="submit" class="btn btn-danger">DESATIVAR</button></a>
                     </td>
                 </tr>
                 </tbody>

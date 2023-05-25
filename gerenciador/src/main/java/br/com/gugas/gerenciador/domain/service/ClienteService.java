@@ -5,6 +5,7 @@ import br.com.gugas.gerenciador.domain.model.cliente.Cliente;
 import br.com.gugas.gerenciador.domain.repository.ClienteRepository;
 import br.com.gugas.gerenciador.dto.cliente.CadastroCliente;
 import br.com.gugas.gerenciador.dto.cliente.ListarCliente;
+import br.com.gugas.gerenciador.dto.cliente.ListarClienteInativo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +28,8 @@ public class ClienteService {
         return clienteRepository.findAllByAtivoTrue().stream().map(ListarCliente::new).toList();
     }
 
-    public List<ListarCliente> listarInativos() {
-        return clienteRepository.findAllByAtivoFalse().stream().map(ListarCliente::new).toList();
+    public List<ListarClienteInativo> listarInativos() {
+        return clienteRepository.findAllByAtivoFalse().stream().map(ListarClienteInativo::new).toList();
     }
 
     public Cliente buscarPorId(Long id) {
