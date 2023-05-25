@@ -29,11 +29,13 @@ public class Cliente {
             @AttributeOverride(name = "numero", column = @Column(name = "telefone"))
     })
     private Telefone telefone;
+    private Boolean ativo;
 
     public Cliente(String nome, CPF cpf, Endereco endereco, Telefone telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.ativo = true;
     }
 }
