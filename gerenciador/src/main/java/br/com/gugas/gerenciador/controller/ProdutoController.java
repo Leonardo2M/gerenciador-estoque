@@ -19,7 +19,7 @@ public class ProdutoController {
 
     @GetMapping("/cadastrar")
     public String cadastrarProduto() {
-        return "produto-form";
+        return "produtos/produto-form";
     }
 
     @PostMapping ("/cadastrar")
@@ -31,7 +31,7 @@ public class ProdutoController {
 
     @GetMapping("/listar")
     public ModelAndView listarProdutos() {
-        ModelAndView mv = new ModelAndView("produtos-cadastrados");
+        ModelAndView mv = new ModelAndView("produtos/produtos-cadastrados");
         mv.addObject("produtos", service.listar());
 
         return mv;
