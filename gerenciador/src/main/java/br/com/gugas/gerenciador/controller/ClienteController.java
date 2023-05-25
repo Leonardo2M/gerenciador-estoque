@@ -4,10 +4,7 @@ import br.com.gugas.gerenciador.domain.service.ClienteService;
 import br.com.gugas.gerenciador.dto.cliente.CadastroCliente;
 import br.com.gugas.gerenciador.dto.cliente.ListarCliente;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -36,9 +33,13 @@ public class ClienteController {
     @GetMapping("/listar")
     public ModelAndView listarClientes() {
         ModelAndView mv = new ModelAndView("cliente/clientes-cadastrados");
-        List<ListarCliente> lista = service.listar();
-        lista.forEach(System.out::println);
         mv.addObject("clientes", service.listar());
         return mv;
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String deletar(@PathVariable Long id) {
+        service.deletar(id);
+        return "redirect:/cliente/listar";
     }
 }
