@@ -13,12 +13,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "clientes")
 public class Cliente {
 
-    public Cliente(String nome, CPF cpf, Endereco endereco) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +24,16 @@ public class Cliente {
     private CPF cpf;
     @Embedded
     private Endereco endereco;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "numero", column = @Column(name = "telefone"))
+    })
+    private Telefone telefone;
 
-
+    public Cliente(String nome, CPF cpf, Endereco endereco, Telefone telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.telefone = telefone;
+    }
 }
