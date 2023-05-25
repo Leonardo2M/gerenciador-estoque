@@ -30,7 +30,7 @@ public class ClienteController {
     @PostMapping("/cadastrar")
     public String salvar(@ModelAttribute CadastroCliente dados) {
         service.salvar(dados);
-        return "redirect:/clientes/listar";
+        return "redirect:/cliente/listar";
     }
 
     @GetMapping("/listar")

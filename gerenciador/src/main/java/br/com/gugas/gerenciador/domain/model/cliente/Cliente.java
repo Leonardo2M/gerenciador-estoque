@@ -38,4 +38,8 @@ public class Cliente {
         this.telefone = telefone;
         this.ativo = true;
     }
+
+    public void desativar() {
+        this.ativo = false;
+    }
 }
