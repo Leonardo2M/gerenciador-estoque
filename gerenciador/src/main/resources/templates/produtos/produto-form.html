@@ -8,15 +8,17 @@
     </head>
     <body>
         <div class="d-flex justify-content-center">
-            <form method="post">
+            <form th:object="${cadastroProduto}" method="post">
                 <h1>CADASTRAR PRODUTO</h1>
                 <div class="mb-3 mt-3">
-                    <label for="nome" class="form-label">Nome:</label>
-                    <input type="text" class="form-control form-control" id="nome" placeholder="Nome do produto" name="nome">
+                    <label class="form-label">Nome:</label>
+                    <input th:field="*{nome}" type="text" class="form-control form-control"  placeholder="Nome do produto" >
+                    <div th:errors="*{nome}">ERROS DO NOME</div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="preco" class="form-label">Preço:</label>
-                    <input type="number" class="form-control form-control" id="preco" placeholder="Preço do produto" name="preco" step="0.01">
+                    <label class="form-label">Preço:</label>
+                    <input th:field="*{preco}" type="number" class="form-control form-control" placeholder="Preço do produto" step="0.01">
+                    <div th:errors="*{preco}">ERROS NO PREÇO</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Cadastrar</button>

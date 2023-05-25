@@ -3,7 +3,9 @@ package br.com.gugas.gerenciador.controller;
 import br.com.gugas.gerenciador.domain.service.ProdutoService;
 import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +25,12 @@ public class ProdutoController {
     }
 
     @PostMapping ("/cadastrar")
-    public String salvar(CadastroProduto dados) {
-        service.salvar(dados);
+    public String salvar(@Valid CadastroProduto dados, BindingResult result) {
+        if(result.hasErrors()) {
+            return "produtos/produto-form";
+        }
 
+        service.salvar(dados);
         return "redirect:/produto/listar";
     }
 
