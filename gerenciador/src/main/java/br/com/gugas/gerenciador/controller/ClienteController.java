@@ -20,12 +20,12 @@ public class ClienteController {
 
     @GetMapping("/cadastrar")
     public String cadastrar() {
-        return "cliente/cadastrarCliente";
+        return "cliente-form";
     }
 
     @PostMapping("/cadastrar")
     public String salvar(@ModelAttribute CadastroCliente dados) {
         service.salvar(dados);
-        return "cliente/cadastrarCliente";
+        return "cliente-form";
     }
 }

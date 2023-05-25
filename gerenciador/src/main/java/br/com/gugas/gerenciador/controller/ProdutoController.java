@@ -1,6 +1,5 @@
 package br.com.gugas.gerenciador.controller;
 
-import br.com.gugas.gerenciador.domain.model.produto.Produto;
 import br.com.gugas.gerenciador.domain.service.ProdutoService;
 import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
@@ -20,7 +19,7 @@ public class ProdutoController {
 
     @GetMapping("/cadastrar")
     public String cadastrarProduto() {
-        return "produtos/produtoForm";
+        return "produto-form";
     }
 
     @PostMapping ("/cadastrar")
@@ -32,7 +31,7 @@ public class ProdutoController {
 
     @GetMapping("/listar")
     public ModelAndView listarProdutos() {
-        ModelAndView mv = new ModelAndView("produtos/produtosCadastrados");
+        ModelAndView mv = new ModelAndView("produtos-cadastrados");
         mv.addObject("produtos", service.listar());
 
         return mv;
@@ -52,7 +51,7 @@ public class ProdutoController {
 
     @GetMapping("/atualizar/{id}")
     public String atualizar() {
-        return "produtos/atualizarForm";
+        return "produto-atualizar-form";
     }
 
     @PostMapping("/atualizar/{id}")
