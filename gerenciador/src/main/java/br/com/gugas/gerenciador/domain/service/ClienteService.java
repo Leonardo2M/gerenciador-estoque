@@ -27,6 +27,10 @@ public class ClienteService {
         return clienteRepository.findAllByAtivoTrue().stream().map(ListarCliente::new).toList();
     }
 
+    public List<ListarCliente> listarInativos() {
+        return clienteRepository.findAllByAtivoFalse().stream().map(ListarCliente::new).toList();
+    }
+
     public Cliente buscarPorId(Long id) {
         return clienteRepository.findById(id).orElseThrow(() -> new ClienteException("Cliente com id = " + id + " não foi encontrado!"));
     }
@@ -36,4 +40,5 @@ public class ClienteService {
         cliente.desativar();
         clienteRepository.save(cliente);
     }
+
 }

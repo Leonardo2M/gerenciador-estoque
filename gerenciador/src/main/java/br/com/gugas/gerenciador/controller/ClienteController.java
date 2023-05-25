@@ -37,6 +37,13 @@ public class ClienteController {
         return mv;
     }
 
+    @GetMapping("/inativos/listar")
+    public ModelAndView listarInativos() {
+        ModelAndView mv = new ModelAndView("cliente/clientes-inativos");
+        mv.addObject("clientes", service.listarInativos());
+        return mv;
+    }
+
     @GetMapping("/excluir/{id}")
     public String deletar(@PathVariable Long id) {
         service.deletar(id);
