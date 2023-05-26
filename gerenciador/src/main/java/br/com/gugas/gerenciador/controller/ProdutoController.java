@@ -58,16 +58,22 @@ public class ProdutoController {
 
     @GetMapping("/atualizar/{id}")
     public ModelAndView atualizar(@PathVariable Long id) {
+        AtualizarProduto atualizarProduto = service.atualizarPorId(id);
+
         ModelAndView mv = new ModelAndView("produtos/produto-atualizar-form");
-        mv.addObject("produto", service.buscarPorId(id));
+        mv.addObject("atualizarProduto", atualizarProduto);
 
         return mv;
     }
 
-    @PostMapping("/atualizar/{id}")
-    public String atualizar(@PathVariable Long id, AtualizarProduto dados) {
-        service.atualizar(id, dados);
 
+    @PostMapping("/atualizar/{id}")
+    public String atualizarProduto(@PathVariable Long id, @Valid @ModelAttribute("atualizarProduto") AtualizarProduto dados, BindingResult result) {
+        if (result.hasErrors()) {
+            return "produtos/produto-atualizar-form";
+        }
+
+        service.atualizar(id, dados);
         return "redirect:/produto/listar";
     }
 

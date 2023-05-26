@@ -55,4 +55,10 @@ public class ProdutoService {
         produto.getEstoque().adicionarCompra(quantidade);
         produtoRepository.save(produto);
     }
+
+    public AtualizarProduto atualizarPorId(Long id) {
+        Produto produto = buscarPorId(id);
+
+        return new AtualizarProduto(produto.getNome(), produto.getPreco());
+    }
 }
