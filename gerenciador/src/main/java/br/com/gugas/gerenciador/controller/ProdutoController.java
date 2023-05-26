@@ -57,8 +57,11 @@ public class ProdutoController {
     }
 
     @GetMapping("/atualizar/{id}")
-    public String atualizar() {
-        return "produto-atualizar-form";
+    public ModelAndView atualizar(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("produtos/produto-atualizar-form");
+        mv.addObject("produto", service.buscarPorId(id));
+
+        return mv;
     }
 
     @PostMapping("/atualizar/{id}")
