@@ -32,12 +32,12 @@
                 <tr th:each="cliente : ${clientes}">
                     <td><span th:text="${cliente.nome}"></span></td>
                     <td><span th:text="${cliente.cpf.numero}"></span></td>
-                    <td><span th:text="${cliente.endereco.logradouro + ' ' + cliente.endereco.numero}"></span></td>
+                    <td><span th:text="${cliente.endereco.logradouro + ' Nº' + cliente.endereco.numero}"></span></td>
                     <td><span th:text="${cliente.endereco.bairro}"></span></td>
                     <td><span th:text="${cliente.endereco.cidade}"></span></td>
                     <td><span th:text="${cliente.telefone.ddd + ' ' + cliente.telefone.numero}"></span></td>
                     <td>
-                        <a href="#" ><button type="submit" class="btn btn-warning">EDITAR</button></a>
+                        <a th:href="@{'/cliente/atualizar/' + ${cliente.id}}"><button type="submit" class="btn btn-warning">EDITAR</button></a>
                     </td>
                     <td>
                         <a th:href="@{'/cliente/excluir/' + ${cliente.id}}"><button type="submit" class="btn btn-secondary">DESATIVAR</button></a>

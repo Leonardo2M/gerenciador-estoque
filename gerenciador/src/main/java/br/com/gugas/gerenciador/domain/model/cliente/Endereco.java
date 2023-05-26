@@ -16,4 +16,18 @@ public class Endereco {
     private String numero;
     private String cidade;
 
+    public void atualizar(Endereco endereco) {
+        if(endereco.getLogradouro() != null) {
+            this.logradouro = endereco.getLogradouro();
+        }
+        if(endereco.getBairro() != null) {
+            this.bairro = endereco.getBairro();
+        }
+        if(endereco.getNumero() != null) {
+            this.numero = endereco.getNumero();
+        }
+        if(endereco.getCidade() != null) {
+            this.cidade = endereco.getCidade();
+        }
+    }
 }

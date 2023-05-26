@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Cliente</title>
+    <!-- Link para o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <form th:object="${atualizarCliente}" method="post">
+        <h1>ATUALIZAR CLIENTE</h1>
+        <div class="mb-3 mt-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" th:field="*{nome}" th:value="${atualizarCliente.nome}">
+            <div th:errors="*{nome}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="cpf" class="form-label">CPF:</label>
+            <input type="text" class="form-control" th:field="*{cpf}" th:value="${atualizarCliente.cpf}" placeholder="CPF do cliente">
+            <div th:errors="*{cpf}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="logradouro" class="form-label">Logradouro:</label>
+            <input type="text" class="form-control" th:field="*{logradouro}" th:value="${atualizarCliente.logradouro}" placeholder="Logradouro">
+            <div th:errors="*{logradouro}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="numeroCasa" class="form-label">Número:</label>
+            <input type="text" class="form-control" th:field="*{numeroCasa}" th:value="${atualizarCliente.numeroCasa}" placeholder="Número">
+            <div th:errors="*{numeroCasa}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="bairro" class="form-label">Bairro:</label>
+            <input type="text" class="form-control" th:field="*{bairro}" th:value="${atualizarCliente.bairro}" placeholder="Bairro">
+            <div th:errors="*{bairro}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="cidade" class="form-label">Cidade:</label>
+            <input type="text" class="form-control" th:field="*{cidade}" th:value="${atualizarCliente.cidade}" placeholder="Cidade">
+            <div th:errors="*{cidade}"></div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="telefone" class="form-label">Telefone:</label>
+            <input type="text" class="form-control" th:field="*{telefone}" th:value="${atualizarCliente.telefone}" placeholder="xx xxxxx-xxxx">
+            <div th:errors="*{telefone}"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+    </form>
+</div>
+</body>
+</html>

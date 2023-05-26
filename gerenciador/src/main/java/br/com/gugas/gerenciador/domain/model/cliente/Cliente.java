@@ -1,6 +1,8 @@
 package br.com.gugas.gerenciador.domain.model.cliente;
 
 
+import br.com.gugas.gerenciador.dto.cliente.AtualizarCliente;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,5 +45,22 @@ public class Cliente {
         this.ativo = !this.ativo;
     }
 
+    public String getTelefoneDDD() {
+        return this.telefone.getDdd() + " " + this.telefone.getNumero();
+    }
 
+    public void atualizar(Cliente dados) {
+        if(dados.getNome() != null) {
+            this.nome = dados.getNome();
+        }
+        if(dados.getCpf() != null) {
+            this.cpf.atualizar(dados.getCpf());
+        }
+        if(dados.getEndereco() != null) {
+            this.endereco.atualizar(dados.getEndereco());
+        }
+        if(dados.getTelefone() != null) {
+            this.telefone.atualizar(dados.getTelefone());
+        }
+    }
 }

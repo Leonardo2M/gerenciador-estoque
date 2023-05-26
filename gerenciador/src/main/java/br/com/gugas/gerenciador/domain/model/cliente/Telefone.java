@@ -13,4 +13,13 @@ public class Telefone {
 
     private String ddd;
     private String numero;
+
+    public void atualizar(Telefone telefone) {
+        if(telefone.getDdd() != null) {
+            this.ddd = telefone.getDdd();
+        }
+        if(telefone.getNumero() != null) {
+            this.numero = telefone.getNumero();
+        }
+    }
 }

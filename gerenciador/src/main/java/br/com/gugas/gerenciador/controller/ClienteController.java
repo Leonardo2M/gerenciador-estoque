@@ -1,13 +1,12 @@
 package br.com.gugas.gerenciador.controller;
 
 import br.com.gugas.gerenciador.domain.service.ClienteService;
+import br.com.gugas.gerenciador.dto.cliente.AtualizarCliente;
 import br.com.gugas.gerenciador.dto.cliente.CadastroCliente;
-import br.com.gugas.gerenciador.dto.cliente.ListarCliente;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/cliente")
@@ -53,6 +52,23 @@ public class ClienteController {
     @GetMapping("/inativos/reativar/{id}")
     public String reativar(@PathVariable Long id) {
         service.reativar(id);
+        return "redirect:/cliente/listar";
+    }
+
+    @GetMapping("/atualizar/{id}")
+    public ModelAndView atualizar(@PathVariable Long id) {
+        AtualizarCliente atualizarCliente = service.atualizarPorId(id);
+
+        ModelAndView mv = new ModelAndView("cliente/cliente-atualizar-form");
+        mv.addObject("atualizarCliente", atualizarCliente);
+
+        return mv;
+    }
+
+
+    @PostMapping("/atualizar/{id}")
+    public String atualizarCliente(@PathVariable Long id, AtualizarCliente dados) {
+        service.atualizar(id, dados);
         return "redirect:/cliente/listar";
     }
 }

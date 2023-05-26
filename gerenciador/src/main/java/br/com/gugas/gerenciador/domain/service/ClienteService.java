@@ -3,9 +3,11 @@ package br.com.gugas.gerenciador.domain.service;
 import br.com.gugas.gerenciador.domain.exception.ClienteException;
 import br.com.gugas.gerenciador.domain.model.cliente.Cliente;
 import br.com.gugas.gerenciador.domain.repository.ClienteRepository;
+import br.com.gugas.gerenciador.dto.cliente.AtualizarCliente;
 import br.com.gugas.gerenciador.dto.cliente.CadastroCliente;
 import br.com.gugas.gerenciador.dto.cliente.ListarCliente;
 import br.com.gugas.gerenciador.dto.cliente.ListarClienteInativo;
+import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,4 +50,16 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
+    public AtualizarCliente atualizarPorId(Long id) {
+        Cliente cliente = buscarPorId(id);
+
+        return new AtualizarCliente(cliente);
+    }
+
+    public void atualizar(Long id, AtualizarCliente dados) {
+        Cliente cliente = buscarPorId(id);
+        cliente.atualizar(dados.toCliente());
+
+        clienteRepository.save(cliente);
+    }
 }

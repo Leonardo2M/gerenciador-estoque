@@ -10,6 +10,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Embeddable
 public class CPF {
+
     private String numero;
 
+    public void atualizar(CPF cpf) {
+        if(cpf.getNumero() != null) {
+            this.numero = cpf.getNumero();
+        }
+    }
 }
