@@ -4,6 +4,8 @@ import br.com.gugas.gerenciador.domain.service.ProdutoService;
 import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import br.com.gugas.gerenciador.dto.produto.CadastroProduto;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/cadastrar")
-    public String cadastrarProduto() {
+    public String cadastrarProduto(CadastroProduto cadastroProduto) {
         return "produtos/produto-form";
     }
 

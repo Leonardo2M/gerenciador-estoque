@@ -13,12 +13,12 @@
                 <div class="mb-3 mt-3">
                     <label class="form-label">Nome:</label>
                     <input th:field="*{nome}" type="text" class="form-control form-control"  placeholder="Nome do produto" >
-                    <div th:errors="*{nome}">ERROS DO NOME</div>
+                    <div th:errors="*{nome}">ERROS</div>
                 </div>
                 <div class="mb-3 mt-3">
                     <label class="form-label">Preço:</label>
                     <input th:field="*{preco}" type="number" class="form-control form-control" placeholder="Preço do produto" step="0.01">
-                    <div th:errors="*{preco}">ERROS NO PREÇO</div>
+                    <div th:errors="*{preco}">ERROS</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
