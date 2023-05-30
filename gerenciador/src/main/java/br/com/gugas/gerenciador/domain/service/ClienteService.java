@@ -38,7 +38,7 @@ public class ClienteService {
         return clienteRepository.findById(id).orElseThrow(() -> new ClienteException("Cliente com id = " + id + " não foi encontrado!"));
     }
 
-    public void deletar(Long id) {
+    public void desativar(Long id) {
         Cliente cliente = buscarPorId(id);
         cliente.mudarEstadoAtivo();
         clienteRepository.save(cliente);
@@ -48,6 +48,13 @@ public class ClienteService {
         Cliente cliente = buscarPorId(id);
         cliente.mudarEstadoAtivo();
         clienteRepository.save(cliente);
+    }
+
+    public void deletar(Long id) {
+        if(!clienteRepository.existsById(id)) {
+           throw new ClienteException("Cliente com id = " + id + " não foi encontrado!");
+        }
+        clienteRepository.deleteById(id);
     }
 
     public AtualizarCliente atualizarPorId(Long id) {

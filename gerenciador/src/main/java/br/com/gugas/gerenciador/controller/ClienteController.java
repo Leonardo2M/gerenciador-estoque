@@ -49,6 +49,12 @@ public class ClienteController {
         return "redirect:/cliente/listar";
     }
 
+    @GetMapping("/desativar/{id}")
+    public String desativar(@PathVariable Long id) {
+        service.desativar(id);
+        return "redirect:/cliente/listar";
+    }
+
     @GetMapping("/inativos/reativar/{id}")
     public String reativar(@PathVariable Long id) {
         service.reativar(id);
