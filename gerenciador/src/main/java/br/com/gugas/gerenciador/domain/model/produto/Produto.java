@@ -1,5 +1,6 @@
 package br.com.gugas.gerenciador.domain.model.produto;
 
+import br.com.gugas.gerenciador.domain.model.venda.Item;
 import br.com.gugas.gerenciador.domain.model.venda.Venda;
 import br.com.gugas.gerenciador.dto.produto.AtualizarProduto;
 import jakarta.persistence.*;
@@ -33,8 +34,9 @@ public class Produto {
     private BigDecimal preco;
     @Embedded
     private Estoque estoque;
-    @ManyToMany(mappedBy = "produtos")
-    private Set<Venda> vendas = new HashSet<>();
+
+    @OneToMany(mappedBy = "produto")
+    private Set<Item> itens = new HashSet<>();
 
     public void atualizarDados(AtualizarProduto dados) {
         if(dados.getNome() != null && !dados.getNome().equals("")) {
